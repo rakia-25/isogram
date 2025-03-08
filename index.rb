@@ -1,16 +1,4 @@
-def programme_end
-  loop do
-    puts "Entrez un mot ou une phrase (Tapez -1 pour quitter): "
-  str=gets
-  mot_utilisateur=str.chomp
-    if mot_utilisateur == "-1"
-      puts "Fin du programme"
-      break
-    else
-      is_isogram?(mot_utilisateur)
-    end
-  end
-end
+
 def is_isogram?(mot)
   mots=mot.gsub(/[-_\s]/,'') #supprime les caracteres "_ - et espace"
   hash={} 
@@ -22,15 +10,13 @@ def is_isogram?(mot)
 
   hash_sort.each_value do |value| #boucle sur les differentes valeur du hash
       if value>1  #si value est superieur a 1,donc il y'a une lettre qui se rpete plusieurs fois
-        puts false #false ce mot n'est pas un isogram
-        puts
+        return false #false ce mot n'est pas un isogram
         break
       elsif value==1
-        puts true #ce mot est un isogram
+        return true #ce mot est un isogram
         break
       end
     end
 end
-programme_end
 
 
